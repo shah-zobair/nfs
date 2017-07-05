@@ -1,4 +1,4 @@
-FROM bac/rhel7
+FROM rhel7
 
 MAINTAINER Shah Zobair <szobair@redhat.com>
 
