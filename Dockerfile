@@ -9,10 +9,14 @@ RUN yum update -y && \
     yum install -y nfs-utils rpcbind && yum clean all
 
 RUN mkdir -p /NFS/registry && \
-    chmod -R 777 /NFS/registry && \
-    chown -R nfsnobody.nfsnobody /NFS/registry
+    mkdir -p /NFS/metrics && \
+    mkdir -p /NFS/logging && \
+    chmod -R 777 /NFS && \
+    chown -R nfsnobody.nfsnobody /NFS
 
-RUN echo "/NFS/registry *(rw)" >> /etc/exports
+RUN echo "/NFS/registry *(rw)" >> /etc/exports && \
+    echo "/NFS/metrics *(rw)" >> /etc/exports && \
+    echo "/NFS/logging *(rw)" >> /etc/exports
 
 EXPOSE 111 2049
 
